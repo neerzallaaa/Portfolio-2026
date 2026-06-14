@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neerzalla Atha Nafisah - Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Swiper.js CSS CDN for 3D Project Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0b1329;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Carousel Smooth Styling */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Swiper Project Slider Styling */
+        .projectSwiper {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 25px;
+        }
+        .swiper-slide-project {
+            background-position: center;
+            background-size: cover;
+            width: 320px; /* Default for mobile */
+            height: auto;
+            opacity: 0.4;
+            transform: scale(0.85);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        @media (min-width: 768px) {
+            .swiper-slide-project {
+                width: 500px; /* Keep correct wide card aspect ratio */
+            }
+        }
+        .swiper-slide-project.swiper-slide-active {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            z-index: 10;
+            cursor: default;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#0f172a',
+                            900: '#0b0f19',
+                            950: '#030712'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-primary-600 to-sky-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity uppercase">
+                Neerzalla Atha Nafisah
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projects</a>
+                <a href="#organizations" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Organizations</a>
+                <a href="#certifications" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Certs & Skills</a>
+                <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-4">
+                <button id="themeToggleBtn" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all focus:outline-none" aria-label="Toggle Theme">
+                    <i id="themeIcon" data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <a href="https://drive.google.com/file/d/1Hu4GWzdE6ROL2GbiiPTaNC6AQqoaXAXA/view?usp=sharing" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2.5 text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 active:bg-primary-800 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5 active:translate-y-0">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Get Resume</span>
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all focus:outline-none">
+                    <i id="menuIcon" data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4 space-y-3 transition-all">
+            <a href="#about" class="block py-2 text-base font-semibold hover:text-primary-600">About</a>
+            <a href="#experience" class="block py-2 text-base font-semibold hover:text-primary-600">Experience</a>
+            <a href="#projects" class="block py-2 text-base font-semibold hover:text-primary-600">Projects</a>
+            <a href="#organizations" class="block py-2 text-base font-semibold hover:text-primary-600">Organizations</a>
+            <a href="#certifications" class="block py-2 text-base font-semibold hover:text-primary-600">Certs & Skills</a>
+            <a href="#contact" class="block py-2 text-base font-semibold hover:text-primary-600">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative overflow-hidden pt-28 pb-16 flex flex-col items-center">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-primary-500/10 rounded-full filter blur-[100px]"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-sky-500/10 rounded-full filter blur-[100px]"></div>
+
+            <div class="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10 w-full mb-16">
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary-50 dark:bg-primary-500/10 text-primary-700 dark:text-primary-400 text-xs font-bold tracking-wider uppercase mx-auto">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+                    </span>
+                    <span>Industrial Engineering • Manufacturing Operations, Supply Chain, & Process Improvement</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Hi, I am <span class="bg-gradient-to-r from-primary-600 to-sky-500 bg-clip-text text-transparent">Neerzalla</span>
+                </h1>
+
+                <!-- ABOUT ME INTEGRATION -->
+                <div class="space-y-4 max-w-3xl mx-auto">
+                    <p class="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+                        A final-year Industrial Engineering student at Universitas Sebelas Maret skilled in <strong class="text-slate-900 dark:text-white">PPIC, Warehouse Management, and Material Control.</strong>
+                    </p>
+
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed text-center">
+                        Experienced in the heavy equipment and automotive industries with a strong focus on production planning and inventory optimization. Proven track record of applying ABC Classification, Lean Manufacturing, and workflow optimization to systematically eliminate waste. Currently seeking progressive opportunities to drive efficiency in supply chain and operations management.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex justify-center items-center space-x-6 pt-4 text-slate-400 dark:text-slate-500">
+                    <a href="https://www.linkedin.com/in/neerzallaatha" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ABOUT & EDUCATION LAYOUT -->
+            <div id="about" class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-8 scroll-mt-20 md:scroll-mt-24">
+                
+                <!-- Left Side: Clean Education Card -->
+                <div class="lg:col-span-6 flex flex-col justify-between bg-white dark:bg-slate-900 rounded-[1.5rem] border border-slate-100 dark:border-slate-800 shadow-xl p-6 md:p-8 transition-all">
+                    <div class="space-y-5">
+                        <div class="flex items-start justify-between">
+                            <div class="p-3 rounded-2xl bg-primary-50 dark:bg-primary-500/10 text-primary-600 border border-primary-100 dark:border-primary-500/20">
+                                <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                            </div>
+                            <div class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-sm">
+                                <span class="h-2 w-2 rounded-full bg-primary-500"></span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">GPA 3.45 / 4.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-1.5">
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">Universitas Sebelas Maret</h3>
+                            <p class="text-sm font-bold text-primary-600 dark:text-primary-400">Bachelor of Industrial Engineering</p>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400 flex items-center mt-1">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i>
+                                2022 – Expected Grad: Aug 2026
+                            </p>
+                        </div>
+
+                        <div class="pt-5 border-t border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i data-lucide="book-open-check" class="w-4 h-4 text-slate-400"></i>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Thesis</p>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                                "Analysis and Service Quality Improvement Using Importance-Satisfaction Model and Gap Analysis at PT Solo Grafika Utama"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button onclick="openThesisModal()" class="w-full inline-flex items-center justify-center space-x-2 px-4 py-3 bg-slate-50 dark:bg-slate-950 hover:bg-primary-50 dark:hover:bg-primary-500/10 text-primary-600 border border-slate-200 dark:border-slate-800 hover:border-primary-200 dark:hover:border-primary-500/30 rounded-xl text-sm font-bold transition-all group">
+                            <span>Read Thesis Highlight</span>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Single Highlight Photo -->
+                <div class="lg:col-span-6 bg-white dark:bg-slate-900 rounded-[1.5rem] border border-slate-100 dark:border-slate-800 shadow-xl p-6 md:p-8 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 shrink-0">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="images" class="text-slate-400 w-5 h-5"></i>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Academic Milestones</h4>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Photos Slider -->
+                    <div class="relative group/slide w-full flex-grow rounded-2xl overflow-hidden shadow-md bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 min-h-[250px] sm:min-h-[300px]">
+                        <div id="highlightSlider" class="flex w-full h-full absolute inset-0 transition-transform duration-500 ease-in-out">
+                            
+                            <!-- Photo 1 -->
+                            <div class="w-full h-full shrink-0 relative cursor-pointer group" onclick="openLightbox('PHOTO-10.png', 'Academic Milestone - Highlight 1')">
+                                <img src="PHOTO-10.png" onerror="this.onerror=null;this.src='https://placehold.co/800x600/0f172a/ffffff?text=Highlight+1';" alt="Academic Highlight 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 sm:p-6">
+                                    <p class="text-white text-sm sm:text-base font-bold">Freshman Year</p>
+                                </div>
+                            </div>
+
+                            <!-- Photo 2 -->
+                            <div class="w-full h-full shrink-0 relative cursor-pointer group" onclick="openLightbox('PHOTO-11.jpeg', 'Academic Milestone - Highlight 2')">
+                                <img src="PHOTO-11.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/800x600/0f172a/ffffff?text=Highlight+2';" alt="Academic Highlight 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 sm:p-6">
+                                    <p class="text-white text-sm sm:text-base font-bold">Student Intern Completion</p>
+                                </div>
+                            </div>
+
+                            <!-- Photo 3 -->
+                            <div class="w-full h-full shrink-0 relative cursor-pointer group" onclick="openLightbox('PHOTO-1.jpeg', 'Industrial Internship Highlight')">
+                                <img src="PHOTO-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x600/0f172a/ffffff?text=Highlight+3';" alt="Industrial Internship Highlight" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 sm:p-6">
+                                    <p class="text-white text-sm sm:text-base font-bold">Thesis Defense Completion</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20">
+                            <span class="highlight-dot h-1.5 w-4 rounded-full bg-white transition-all cursor-pointer"></span>
+                            <span class="highlight-dot h-1.5 w-1.5 rounded-full bg-white/50 transition-all cursor-pointer"></span>
+                            <span class="highlight-dot h-1.5 w-1.5 rounded-full bg-white/50 transition-all cursor-pointer"></span>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button onclick="prevExpSlide('highlight')" class="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow-lg opacity-0 group-hover/slide:opacity-100 transition-opacity z-30 focus:outline-none">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="nextExpSlide('highlight')" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow-lg opacity-0 group-hover/slide:opacity-100 transition-opacity z-30 focus:outline-none">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <section id="experience" class="pt-6 pb-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 scroll-mt-20 md:scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-primary-600 uppercase mb-3">Career History</h2>
+                    <p class="text-3xl font-extrabold sm:text-4xl text-slate-900 dark:text-white">Work Experience</p>
+                    <div class="h-1 w-12 bg-primary-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="max-w-5xl mx-auto relative before:absolute before:inset-y-0 before:left-6 md:before:left-1/2 before:w-0.5 before:-translate-x-1/2 before:bg-slate-200 dark:before:bg-slate-800">
+                    
+                    <!-- PT Astra Komponen Indonesia -->
+                    <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-start mb-20 group">
+                        <!-- Uniform Timeline Dot -->
+                        <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-white dark:ring-slate-950 transition-transform group-hover:scale-125 z-10"></div>
+                        
+                        <!-- Left block with company title + loop sliding picture frame -->
+                        <div class="md:text-right md:col-start-1">
+                            <span class="inline-block px-3 py-1 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 text-xs font-bold rounded-lg mb-2">PPIC Internship</span>
+                            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">PT Astra Komponen Indonesia</h3>
+                            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">Sep 2025 - Dec 2025</p>
+
+                            <!-- Mini Loop Slider Frame -->
+                            <div class="relative w-full h-48 md:w-[320px] md:h-44 rounded-2xl overflow-hidden md:ml-auto shadow-md group/slide bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50">
+                                <div id="astraSlider" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+                                    <div class="w-full h-full shrink-0 relative">
+                                        <img src="PHOTO-2.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Astra+1';" alt="Astra Warehouse 1" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent text-left">
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-full shrink-0 relative">
+                                        <img src="PHOTO-9.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Astra+2';" alt="Astra Inventory 2" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent text-left">
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-full shrink-0 relative">
+                                        <img src="PHOTO-7.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Astra+3';" alt="Astra Quality 3" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent text-left">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Dots -->
+                                <div class="absolute bottom-3 right-3 flex space-x-1 z-20">
+                                    <span class="astra-dot h-1.5 w-1.5 rounded-full bg-white transition-all cursor-pointer"></span>
+                                    <span class="astra-dot h-1.5 w-1.5 rounded-full bg-white/55 transition-all cursor-pointer"></span>
+                                    <span class="astra-dot h-1.5 w-1.5 rounded-full bg-white/55 transition-all cursor-pointer"></span>
+                                </div>
+                                <!-- Interactive slider buttons -->
+                                <button onclick="prevExpSlide('astra')" class="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow opacity-0 group-hover/slide:opacity-100 z-30">
+                                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <button onclick="nextExpSlide('astra')" class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow opacity-0 group-hover/slide:opacity-100 z-30">
+                                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right block with bullets aligned to top edge of title column -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-sm md:col-start-2 mt-4 md:mt-0 w-full">
+                            <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Conducted operational analysis across planning, preparation, warehousing, and delivery processes.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Performed warehouse evaluation using MHC analysis, rectilinear distance, and field observation.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Collaborated with supervisors and operators to identify process inefficiencies.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Developed Instruction Work Standard (IWS) for preparation SFG activities.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- PT Komatsu Indonesia -->
+                    <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-start mb-20 group">
+                        <!-- Uniform Timeline Dot -->
+                        <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-white dark:ring-slate-950 transition-transform group-hover:scale-125 z-10"></div>
+                        
+                        <div class="md:col-start-2 md:pl-0">
+                            <span class="inline-block px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-sky-600 text-xs font-bold rounded-lg mb-2">Warehouse & Material Internship</span>
+                            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">PT Komatsu Indonesia</h3>
+                            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">Jan 2025 - Feb 2025</p>
+
+                            <!-- Mini Loop Slider Frame -->
+                            <div class="relative w-full h-48 md:w-[320px] md:h-44 rounded-2xl overflow-hidden shadow-md group/slide bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50">
+                                <div id="komatsuSlider" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+                                    <div class="w-full h-full shrink-0 relative">
+                                        <img src="PHOTO-13.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Komatsu+1';" alt="Komatsu Manufacturing 1" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent text-left">
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-full shrink-0 relative">
+                                        <img src="PHOTO-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Komatsu+2';" alt="Komatsu Production 2" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent text-left">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Dots -->
+                                <div class="absolute bottom-3 right-3 flex space-x-1 z-20">
+                                    <span class="komatsu-dot h-1.5 w-1.5 rounded-full bg-white transition-all cursor-pointer"></span>
+                                    <span class="komatsu-dot h-1.5 w-1.5 rounded-full bg-white/55 transition-all cursor-pointer"></span>
+                                </div>
+                                <!-- Interactive slider buttons -->
+                                <button onclick="prevExpSlide('komatsu')" class="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow opacity-0 group-hover/slide:opacity-100 z-30">
+                                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <button onclick="nextExpSlide('komatsu')" class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-white shadow opacity-0 group-hover/slide:opacity-100 z-30">
+                                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right block with bullets aligned to top edge of title column -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-sm md:col-start-1 md:row-start-1 mt-4 md:mt-0 w-full">
+                            <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Conducted genba observation and time study on D85 bulldozer hull frame preparation activities.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Analyzed operator and material flow using Lean Manufacturing principles.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Identified operational waste through FMECA and Why-Why Analysis.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Supported process improvement initiatives within production preparation activities.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Laboratory Assistant -->
+                    <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-start group">
+                        <!-- Uniform Timeline Dot -->
+                        <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-white dark:ring-slate-950 transition-transform group-hover:scale-125 z-10"></div>
+                        
+                        <div class="md:text-right md:col-start-1">
+                            <span class="inline-block px-3 py-1 bg-purple-50 dark:bg-purple-500/10 text-purple-600 text-xs font-bold rounded-lg mb-2">Academic Role</span>
+                            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Laboratory Assistant</h3>
+                            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">LSTARS, Universitas Sebelas Maret | Aug 2024 - Present</p>
+
+                            <!-- Single Image Frame -->
+                            <div class="relative w-full h-48 md:w-[320px] md:h-44 rounded-2xl overflow-hidden md:ml-auto shadow-md bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50">
+                                <div class="w-full h-full relative cursor-pointer group/img" onclick="openLightbox('PHOTO-5.jpeg', 'Laboratory Assistant Activities')">
+                                    <img src="PHOTO-5.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Lab+Activity';" alt="Lab Research" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right block with bullets aligned to top edge of title column -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-sm md:col-start-2 mt-4 md:mt-0 w-full">
+                            <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Supported laboratory activities including software training, practicum sessions, and academic assistance.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                    <span>Assisted and instructed practicum sessions related to composite material production and product quality control.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SWIPER SECTION -->
+        <section id="projects" class="pt-6 pb-16 bg-slate-100 dark:bg-slate-900/50 transition-colors duration-300 scroll-mt-20 md:scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-6 overflow-hidden">
+                <div class="text-center max-w-2xl mx-auto mb-4">
+                    <h2 class="text-xs font-bold tracking-widest text-primary-600 uppercase mb-2">Project Experience</h2>
+                    <p class="text-3xl font-extrabold sm:text-4xl text-slate-900 dark:text-white">Engineering Implementations</p>
+                    <div class="h-1 w-12 bg-primary-500 mx-auto mt-2 rounded-full"></div>
+                </div>
+
+                <!-- Swiper Container with Loop Enabled -->
+                <div class="swiper projectSwiper">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- Slide 1: PT Solo Grafika Utama -->
+                        <div class="swiper-slide swiper-slide-project">
+                            <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 overflow-hidden shadow-sm h-full flex flex-col">
+                                <div class="relative h-36 sm:h-40 overflow-hidden bg-slate-200 shrink-0">
+                                    <img src="Picture1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Facility+Layout+Optimization';" alt="Facility Layout 3D Model" class="w-full h-full object-cover">
+                                    <span class="absolute top-3 right-3 px-2.5 py-1 bg-primary-600 text-white text-[10px] font-bold rounded-lg shadow-sm">Course Project</span>
+                                </div>
+                                <div class="p-5 space-y-2.5 flex flex-col flex-grow">
+                                    <div>
+                                        <h3 class="text-lg sm:text-xl font-bold leading-tight text-slate-900 dark:text-white">Facility Layout Optimization</h3>
+                                        <p class="text-[11px] sm:text-xs font-semibold text-primary-600 dark:text-primary-400 mt-1">PT Solo Grafika Utama</p>
+                                    </div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm flex-grow leading-relaxed">Redesigned LKS production facility layout using SLP, ARC, and Blocplan. Evaluated material flow and material handling cost across multiple layout alternatives, achieving 55% reduction in material flow distance and 57% decrease in material handling costs through optimized workstation arrangement.</p>
+                                    <div class="flex flex-wrap gap-1.5 pt-1">
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">SketchUp</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">SLP</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">ARC</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">Blocplan</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">MHC Analysis</span>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 mt-2">
+                                        <a href="https://drive.google.com/file/d/1fEgRrwkh5xtWqAB40s7btnVKtwldFa4C/view?usp=sharing" target="_blank" class="inline-flex items-center space-x-2 text-sm font-bold text-primary-600 hover:text-primary-700 dark:text-primary-400 transition-colors">
+                                            <span>View Project</span>
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: PT Astra Komponen -->
+                        <div class="swiper-slide swiper-slide-project">
+                            <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 overflow-hidden shadow-sm h-full flex flex-col">
+                                <div class="relative h-36 sm:h-40 overflow-hidden bg-slate-200 shrink-0">
+                                    <img src="PHOTO-14.png" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Class+Based+Storage';" alt="Warehouse Storage" class="w-full h-full object-cover">
+                                    <span class="absolute top-3 right-3 px-2.5 py-1 bg-primary-600 text-white text-[10px] font-bold rounded-lg shadow-sm">Internship Project</span>
+                                </div>
+                                <div class="p-5 space-y-2.5 flex flex-col flex-grow">
+                                    <div>
+                                        <h3 class="text-lg sm:text-xl font-bold leading-tight text-slate-900 dark:text-white">Class-Based Storage Implementation</h3>
+                                        <p class="text-[11px] sm:text-xs font-semibold text-primary-600 dark:text-primary-400 mt-1">PT Astra Komponen Indonesia</p>
+                                    </div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm flex-grow leading-relaxed">Developed and implemented warehouse improvement proposal using Class-Based Storage (CBS) and ABC Classification based on 236 product demand records, achieving a verifiable 13.18% reduction in handling costs.</p>
+                                    <div class="flex flex-wrap gap-1.5 pt-1">
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">SketchUp</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">ABC Classification</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">MHC Analysis</span>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 mt-2">
+                                        <a href="https://drive.google.com/file/d/1ltJDUDrY9frZYd6_UgcCE8LuXeLRBQoB/view?usp=drive_link" target="_blank" class="inline-flex items-center space-x-2 text-sm font-bold text-primary-600 hover:text-primary-700 dark:text-primary-400 transition-colors">
+                                            <span>View Project</span>
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: PT Komatsu Indonesia -->
+                        <div class="swiper-slide swiper-slide-project">
+                            <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 overflow-hidden shadow-sm h-full flex flex-col">
+                                <div class="relative h-36 sm:h-40 overflow-hidden bg-slate-200 shrink-0">
+                                    <img src="PHOTO-15.png" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Lean+Manufacturing';" alt="Lean Manufacturing" class="w-full h-full object-cover">
+                                    <span class="absolute top-3 right-3 px-2.5 py-1 bg-primary-600 text-white text-[10px] font-bold rounded-lg shadow-sm">Internship Project</span>
+                                </div>
+                                <div class="p-5 space-y-2.5 flex flex-col flex-grow">
+                                    <div>
+                                        <h3 class="text-lg sm:text-xl font-bold leading-tight text-slate-900 dark:text-white">Lean Analysis for Preparation Process</h3>
+                                        <p class="text-[11px] sm:text-xs font-semibold text-primary-600 dark:text-primary-400 mt-1">PT Komatsu Indonesia</p>
+                                    </div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm flex-grow leading-relaxed">Mapped operator flow using VSM. Increased Value-Added activities from 48% to 74% through future-state recommendations. Applied FMECA and Why-Why Analysis to mitigate operational waste.</p>
+                                    <div class="flex flex-wrap gap-1.5 pt-1">
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">Lean Manufacturing</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">VSM</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">FMECA</span>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 mt-2">
+                                        <a href="https://drive.google.com/file/d/11CuVYrYy52_pGH12ynWpXqPd3gsj87tr/view?usp=sharing" target="_blank" class="inline-flex items-center space-x-2 text-sm font-bold text-primary-600 hover:text-primary-700 dark:text-primary-400 transition-colors">
+                                            <span>View Project</span>
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: International Conference Publication -->
+                        <div class="swiper-slide swiper-slide-project">
+                            <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 overflow-hidden shadow-sm h-full flex flex-col">
+                                <div class="relative h-36 sm:h-40 overflow-hidden bg-slate-200 shrink-0">
+                                    <img src="7f04c654-faa2-4ced-b0ab-cd43e082e201.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/ffffff?text=Conference+Publication';" alt="Conference Presentation" class="w-full h-full object-cover object-top">
+                                    <span class="absolute top-3 right-3 px-2.5 py-1 bg-primary-600 text-white text-[10px] font-bold rounded-lg shadow-sm">Publication</span>
+                                </div>
+                                <div class="p-5 space-y-2.5 flex flex-col flex-grow">
+                                    <div>
+                                        <h3 class="text-lg sm:text-xl font-bold leading-tight text-slate-900 dark:text-white">Student Acceptance Analysis of Digital Learning Platforms</h3>
+                                        <p class="text-[11px] sm:text-xs font-semibold text-primary-600 dark:text-primary-400 mt-1">International Conference Publication</p>
+                                    </div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm flex-grow leading-relaxed">Investigated factors influencing students' acceptance and continuance intention toward Coursera-based MOOCs using TAM. Collected and analyzed data from 182 university students using SPSS regression analysis. Identified Perceived Usefulness as the strongest predictor of continued platform usage.</p>
+                                    <div class="flex flex-wrap gap-1.5 pt-1">
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">Research</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">SPSS</span>
+                                        <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold rounded text-slate-800 dark:text-slate-300">TAM</span>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800 mt-2">
+                                        <a href="https://jurnal.uns.ac.id/ictte/article/view/114524/53249" target="_blank" class="inline-flex items-center space-x-2 text-sm font-bold text-primary-600 hover:text-primary-700 dark:text-primary-400 transition-colors">
+                                            <span>Read Publication</span>
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination mt-4 relative bottom-0"></div>
+                    
+                    <!-- Custom Arrow Buttons inside Projects Carousel -->
+                    <button class="project-prev absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 md:p-3 rounded-full bg-white/90 dark:bg-slate-900/90 hover:bg-white dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-white shadow-md transition-all focus:outline-none hidden sm:flex cursor-pointer">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button class="project-next absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 md:p-3 rounded-full bg-white/90 dark:bg-slate-900/90 hover:bg-white dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-white shadow-md transition-all focus:outline-none hidden sm:flex cursor-pointer">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ORGANIZATIONAL EXPERIENCE -->
+        <section id="organizations" class="pt-6 pb-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 scroll-mt-20 md:scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-primary-600 uppercase mb-3">Leadership & Teamwork</h2>
+                    <p class="text-3xl font-extrabold sm:text-4xl text-slate-900 dark:text-white">Organizational Experience</p>
+                    <div class="h-1 w-12 bg-primary-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- HMTI UNS -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="p-3 bg-primary-100 dark:bg-primary-500/10 text-primary-600 rounded-xl">
+                                <i data-lucide="users" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Head of Internal Division in HRD</h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">HMTI UNS | Mar 2024 - Dec 2024</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Led a team of 6 staff members in overseeing division operations and individual performance throughout the organizational period.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Coordinated and monitored 3 cycles of staff performance assessments for 115 HMTI members per period, including evaluation criteria development.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Organized bonding and appreciation events for 115 HMTI members to foster engagement.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- BEM FT UNS -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="p-3 bg-sky-100 dark:bg-sky-500/10 text-sky-600 rounded-xl">
+                                <i data-lucide="layout-dashboard" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Staff of Internal Management</h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">BEM FT UNS | Mar 2023 - Nov 2023</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Organized engagement and bonding initiatives to improve teamwork and organizational cohesion.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Coordinated leadership development seminars to strengthen leadership awareness and personal development among student staff members.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-primary-500 font-bold mt-0.5">•</span>
+                                <span>Managed a one-month organizational internship program for prospective BEM FT members, including participant coordination.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS & SKILLS -->
+        <section id="certifications" class="pt-6 pb-20 bg-white dark:bg-slate-900/50 transition-colors duration-300 scroll-mt-20 md:scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-primary-600 uppercase mb-3">Qualifications & Credentials</h2>
+                    <p class="text-3xl font-extrabold sm:text-4xl text-slate-900 dark:text-white">Certifications & Skills</p>
+                    <div class="h-1 w-12 bg-primary-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Clean Minimalist Grid for Certifications -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
+                    
+                    <!-- Cert 1 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Supply Chain Management and Analytics</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: Y5GG9N3JVO5M</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/Y5GG9N3JVO5M" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Sustainable & Resilient Operations Mgt.</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: JWK7B0DTQAPK</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/JWK7B0DTQAPK" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Impacts of Sustainable Operations and Supply Chains</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: KA48S7LJELOU</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/KA48S7LJELOU" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Developing & Managing Sustainable Supply Chains</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: 4HZ6T6MRF50E</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/4HZ6T6MRF50E" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Intro to Lean Six Sigma & Project ID Methods</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: U0Y65MEHGEXC</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/U0Y65MEHGEXC" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Six Sigma Principles</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: OKEO5WJKSD99</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/OKEO5WJKSD99" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 7 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Quality Improvement and Management</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: 30AJPCUT15C2</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/30AJPCUT15C2" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 8 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Designing the Organization</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: 4Q54ZTXMPJ5Z</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/4Q54ZTXMPJ5Z" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 9 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Managing the Organization</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: PQP0VGNZLKFX</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/PQP0VGNZLKFX" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Cert 10 -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-primary-500 transition-colors">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Human Resources Analytics</h4>
+                                <p class="text-xs font-mono text-slate-500 mt-1">ID: 8AUPHD5IMPSR</p>
+                            </div>
+                        </div>
+                        <a href="https://coursera.org/verify/8AUPHD5IMPSR" target="_blank" class="p-2 text-slate-400 hover:text-primary-600 transition-colors" title="Verify">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- CORE COMPETENCIES -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+                    <h3 class="text-xl font-bold flex items-center space-x-2 mb-6">
+                        <i data-lucide="cpu" class="text-primary-500"></i>
+                        <span class="text-slate-900 dark:text-white">Core Competencies</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Methodologies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">Lean Manufacturing</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">Process Improvement</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">ABC Classification</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">VSM & FMECA</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Technical Software</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">Minitab</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">IBM SPSS</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">PLS-SEM</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">Autodesk Inventor</span>
+                                <span class="px-3 py-1.5 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-300">Blocplan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & BIODATA SECTION -->
+        <section id="contact" class="pt-6 pb-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 scroll-mt-20 md:scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-primary-600 uppercase mb-3">Get in Touch</h2>
+                    <p class="text-3xl font-extrabold sm:text-4xl text-slate-900 dark:text-white">Contact & Personal Details</p>
+                    <div class="h-1 w-12 bg-primary-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm text-center">
+                    
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900 dark:text-white">Let's Connect!</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+                        I am actively looking for new opportunities in supply chain, procurement planning, and operations management. Feel free to reach out to me through my contact details below.
+                    </p>
+
+                    <!-- Personal Details Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Location -->
+                        <div class="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-950/50 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:border-primary-200 dark:hover:border-primary-500/30 transition-colors">
+                            <div class="p-4 bg-primary-50 dark:bg-primary-500/10 text-primary-600 rounded-full mb-4">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-500 mb-1">Location</p>
+                            <p class="font-bold text-sm sm:text-base text-slate-800 dark:text-slate-200">Bekasi City, Indonesia</p>
+                        </div>
+                        
+                        <!-- Phone/WA -->
+                        <div class="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-950/50 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:border-green-200 dark:hover:border-green-500/30 transition-colors">
+                            <div class="p-4 bg-green-50 dark:bg-green-500/10 text-green-600 rounded-full mb-4">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-500 mb-1">Call / WhatsApp</p>
+                            <a href="https://wa.me/6289662769000" target="_blank" class="font-bold text-sm sm:text-base text-slate-800 dark:text-slate-200 hover:text-green-600 transition-colors">+62 89662769000</a>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-950/50 rounded-2xl border border-slate-100 dark:border-slate-800/50 hover:border-blue-200 dark:hover:border-blue-500/30 transition-colors">
+                            <div class="p-4 bg-blue-50 dark:bg-blue-500/10 text-blue-600 rounded-full mb-4">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-500 mb-1">LinkedIn</p>
+                            <a href="https://www.linkedin.com/in/neerzallaatha" target="_blank" class="font-bold text-sm sm:text-base text-slate-800 dark:text-slate-200 hover:text-blue-600 transition-colors">neerzallaatha</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors duration-300">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">&copy; 2026 Neerzalla Atha Nafisah. All rights reserved.</p>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="absolute inset-0 cursor-pointer" onclick="closeLightbox()"></div>
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full backdrop-blur-md transition-all z-10 focus:outline-none">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Lightbox Image" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl">
+            <p id="lightbox-caption" class="text-white mt-4 text-center text-lg font-medium tracking-wide"></p>
+        </div>
+    </div>
+
+    <!-- THESIS MODAL -->
+    <div id="thesisModal" class="opacity-0 pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity" onclick="closeThesisModal()"></div>
+        
+        <div id="thesisModalContent" class="relative bg-white dark:bg-slate-900 rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800/80 z-10 flex flex-col transform scale-95 transition-all">
+            <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-800 flex justify-between items-start bg-slate-50 dark:bg-slate-900/50">
+                <div class="space-y-2 pr-4">
+                    <div class="inline-flex items-center space-x-1.5 px-2.5 py-1 bg-primary-100 dark:bg-primary-500/20 text-primary-700 dark:text-primary-400 rounded-lg text-[10px] font-bold uppercase tracking-widest mb-1">
+                        Undergraduate Thesis
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold leading-snug text-slate-900 dark:text-white">Analysis and Service Quality Improvement Using Importance-Satisfaction Model and Gap Analysis</h3>
+                    <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-center">
+                        <i data-lucide="building-2" class="w-4 h-4 mr-1.5"></i>
+                        at PT Solo Grafika Utama
+                    </p>
+                </div>
+                <button onclick="closeThesisModal()" class="p-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-all flex-shrink-0">
+                    <i data-lucide="x" class="w-5 h-5 text-slate-600 dark:text-slate-300"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-8 max-h-[60vh]">
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center">
+                        <i data-lucide="target" class="w-4 h-4 mr-2"></i> Research Abstract
+                    </h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base text-justify">
+                        This research aims to evaluate and improve the service quality at PT Solo Grafika Utama. By leveraging the <strong>Importance-Satisfaction Model (ISM)</strong> and <strong>Gap Analysis</strong>, the study identifies critical service attributes where customer expectations exceed the perceived performance. The findings provide actionable, data-driven recommendations for management to prioritize service improvements, optimize resource allocation, and ultimately enhance customer satisfaction.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center">
+                        <i data-lucide="bar-chart" class="w-4 h-4 mr-2"></i> Methodologies Used
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-slate-300">Gap Analysis</span>
+                        <span class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-slate-300">Importance-Satisfaction Model</span>
+                        <span class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-slate-300">Statistical Data Processing</span>
+                        <span class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-slate-300">Customer Satisfaction Index</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // 1. Initialize Icons
+        lucide.createIcons();
+
+        // 2. Theme Toggle Logic
+        const html = document.documentElement;
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                themeIcon.setAttribute('data-lucide', 'sun');
+                localStorage.theme = 'dark';
+            } else {
+                html.classList.remove('dark');
+                themeIcon.setAttribute('data-lucide', 'moon');
+                localStorage.theme = 'light';
+            }
+            lucide.createIcons();
+        }
+
+        // Check Initial Theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(!html.classList.contains('dark'));
+        });
+
+        // 3. Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        });
+
+        // 4. Custom Sliders for Experience Section
+        const expSliderState = {
+            astra: { current: 0, total: 3 },
+            komatsu: { current: 0, total: 2 },
+            highlight: { current: 0, total: 3 }
+        };
+
+        function updateExpSlider(id) {
+            const slider = document.getElementById(id + 'Slider');
+            if (slider) {
+                slider.style.transform = `translateX(-${expSliderState[id].current * 100}%)`;
+            }
+            
+            // Update the pagination dots
+            const dots = document.querySelectorAll(`.${id}-dot`);
+            dots.forEach((dot, index) => {
+                if (index === expSliderState[id].current) {
+                    dot.classList.remove('bg-white/50', 'bg-white/55', 'w-1.5');
+                    dot.classList.add('bg-white', 'w-4'); // Make active dot wider
+                } else {
+                    dot.classList.remove('bg-white', 'w-4');
+                    dot.classList.add('bg-white/50', 'w-1.5');
+                }
+            });
+        }
+
+        function prevExpSlide(id) {
+            expSliderState[id].current = (expSliderState[id].current - 1 + expSliderState[id].total) % expSliderState[id].total;
+            updateExpSlider(id);
+        }
+
+        function nextExpSlide(id) {
+            expSliderState[id].current = (expSliderState[id].current + 1) % expSliderState[id].total;
+            updateExpSlider(id);
+        }
+
+        // Add click events to dots for experience sliders
+        ['astra', 'komatsu', 'highlight'].forEach(id => {
+            const dots = document.querySelectorAll(`.${id}-dot`);
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    expSliderState[id].current = index;
+                    updateExpSlider(id);
+                });
+            });
+        });
+
+        // 5. Initialize Swiper for Projects
+        const projectSwiper = new Swiper('.projectSwiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.project-next',
+                prevEl: '.project-prev',
+            },
+            keyboard: {
+                enabled: true
+            }
+        });
+
+        // 6. Modal / Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const thesisModal = document.getElementById('thesisModal');
+        const thesisModalContent = document.getElementById('thesisModalContent');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                lightboxImg.src = '';
+                lightboxCaption.textContent = '';
+            }, 300);
+        }
+
+        function openThesisModal() {
+            thesisModal.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                thesisModalContent.classList.remove('scale-95');
+                thesisModalContent.classList.add('scale-100');
+            }, 50);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeThesisModal() {
+            thesisModalContent.classList.remove('scale-100');
+            thesisModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                thesisModal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        // Close modals on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!lightbox.classList.contains('opacity-0')) closeLightbox();
+                if (!thesisModal.classList.contains('opacity-0')) closeThesisModal();
+            }
+        });
+    </script>
+</body>
+</html>
